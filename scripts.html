@@ -6,125 +6,44 @@
 <title>Scripts • Rauan Hub</title>
 
 <style>
-body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:#050816;
-  color:white;
-  text-align:center;
-  overflow-x:hidden;
-}
-
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:-1;
-}
-
-h1{
-  color:#00f7ff;
-  text-shadow:0 0 15px #00f7ff;
-  margin-top:30px;
-}
+body{margin:0;font-family:Arial;background:#050816;color:white;text-align:center;}
+h1{color:#00f7ff;text-shadow:0 0 15px #00f7ff;margin-top:30px;}
 
 .card{
   background:#0d1228;
-  margin:25px auto;
-  padding:22px;
-  border-radius:16px;
-  max-width:430px;
+  margin:20px auto;
+  padding:20px;
+  border-radius:15px;
+  max-width:400px;
   box-shadow:0 0 20px #00f7ff;
-  line-height:1.7;
   transition:0.3s;
 }
 
-.card:hover{transform:scale(1.04);}
+.card:hover{transform:scale(1.05);}
 
 .btn{
   margin-top:12px;
-  padding:12px 20px;
-  border-radius:12px;
+  padding:10px 18px;
+  border-radius:10px;
   border:none;
   background:linear-gradient(45deg,#005eff,#00f7ff);
   color:white;
   font-weight:bold;
-  box-shadow:0 0 12px #00f7ff;
-  transition:0.3s;
 }
-
-.btn:hover{transform:scale(1.1);}
-
-.counter{
-  margin-top:10px;
-  font-size:14px;
-  color:#00f7ff;
-}
-
-footer{
-  margin-top:50px;
-  padding:15px;
-  font-size:12px;
-  color:#666;
-}
+a{text-decoration:none;}
 </style>
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
-
-<h1>SCRIPTS</h1>
-<a href="index.html" style="color:#00f7ff;text-decoration:none;">⬅ Voltar</a>
+<h1>🎮 SCRIPTS POR JOGO</h1>
+<a href="index.html" style="color:#00f7ff;">⬅ Voltar</a>
 
 <div class="card">
-<h3>Rauan Hub Script</h3>
-<p>Script principal do hub.</p>
-
-<button class="btn" onclick="copyScript()">📋 Copiar Script</button>
-
-<div class="counter">📊 total de pessoas que copiou: <span id="copies">5932</span></div>
+<h3>🌊 Escape Tsunami for Brainrots</h3>
+<p>Script com funções para facilitar o gameplay.</p>
+<a href="tsunami.html"><button class="btn">Abrir Script</button></a>
 </div>
-
-<footer>Rauan Hub © 2026</footer>
-
-<!-- SOM -->
-<audio autoplay>
-  <source src="https://www.soundjay.com/buttons/sounds/button-29.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-// SCRIPT
-function copyScript(){
-const script=`print("Rauan Hub Ativado")`;
-navigator.clipboard.writeText(script);
-alert("Script copiado!");
-copies.textContent=parseInt(copies.textContent)+1;
-}
-
-// PARTÍCULAS
-const c=document.getElementById("bg");
-const ctx=c.getContext("2d");
-c.width=window.innerWidth;
-c.height=window.innerHeight;
-let particles=[];
-for(let i=0;i<70;i++){
- particles.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2});
-}
-function draw(){
- ctx.clearRect(0,0,c.width,c.height);
- ctx.fillStyle="#00f7ff";
- particles.forEach(p=>{
-   ctx.beginPath();
-   ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-   ctx.fill();
-   p.y+=0.3;
-   if(p.y>c.height)p.y=0;
- });
- requestAnimationFrame(draw);
-}
-draw();
-</script>
 
 </body>
 </html>
