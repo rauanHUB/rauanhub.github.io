@@ -46,6 +46,21 @@ h1{
 
 .card:hover{transform:scale(1.04);}
 
+.status{
+  margin-top:8px;
+  font-weight:bold;
+  padding:5px 10px;
+  border-radius:8px;
+  display:inline-block;
+  font-size:14px;
+}
+
+.key{
+  background:#2e2a0f;
+  color:#ffd000;
+  box-shadow:0 0 10px #ffd000;
+}
+
 .btn{
   margin-top:12px;
   padding:10px 18px;
@@ -56,6 +71,7 @@ h1{
   font-weight:bold;
   cursor:pointer;
 }
+
 a{color:#00f7ff;text-decoration:none;}
 </style>
 </head>
@@ -70,30 +86,13 @@ a{color:#00f7ff;text-decoration:none;}
 <!-- TSUNAMI -->
 <div class="card game">
   <h3>🌊 Escape Tsunami for Brainrots</h3>
+  <p class="status key">🟡 KEY SYSTEM</p>
   <button class="btn" onclick="copyScript('tsunami')">📋 Copiar Script</button>
-</div>
-
-<!-- FUTUROS JOGOS (EXEMPLO) -->
-<div class="card game">
-  <h3>🏡 Brookhaven</h3>
-  <button class="btn" onclick="copyScript('brookhaven')">📋 Copiar Script</button>
-</div>
-
-<div class="card game">
-  <h3>🔪 Murder Mystery 2</h3>
-  <button class="btn" onclick="copyScript('mm2')">📋 Copiar Script</button>
 </div>
 
 <script>
 const scripts = {
-  tsunami: `-- Escape Tsunami
-print("Rauan Hub Tsunami Ativado")`,
-
-  brookhaven: `-- Brookhaven Script
-print("Rauan Hub Brookhaven Ativado")`,
-
-  mm2: `-- MM2 Script
-print("Rauan Hub MM2 Ativado")`
+  tsunami: `loadstring(game:HttpGet("https://raw.githubusercontent.com/debunked69/Solixreworkkeysystem/main/solix%20new%20keyui.lua"))()`
 };
 
 function copyScript(game){
