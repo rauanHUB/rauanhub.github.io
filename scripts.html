@@ -6,20 +6,45 @@
 <title>Scripts • Rauan Hub</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#050816;color:white;text-align:center;}
-h1{color:#00f7ff;text-shadow:0 0 15px #00f7ff;margin-top:30px;}
+body{
+  margin:0;
+  font-family:Arial;
+  background:#050816;
+  color:white;
+  text-align:center;
+}
+
+h1{
+  color:#00f7ff;
+  text-shadow:0 0 15px #00f7ff;
+  margin-top:30px;
+}
+
+.search{
+  margin:20px auto;
+  padding:12px;
+  width:80%;
+  max-width:400px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+  font-size:16px;
+  background:#0d1228;
+  color:#00f7ff;
+  box-shadow:0 0 10px #00f7ff;
+}
 
 .card{
   background:#0d1228;
   margin:20px auto;
   padding:20px;
   border-radius:15px;
-  max-width:400px;
+  max-width:420px;
   box-shadow:0 0 20px #00f7ff;
   transition:0.3s;
 }
 
-.card:hover{transform:scale(1.05);}
+.card:hover{transform:scale(1.04);}
 
 .btn{
   margin-top:12px;
@@ -29,21 +54,63 @@ h1{color:#00f7ff;text-shadow:0 0 15px #00f7ff;margin-top:30px;}
   background:linear-gradient(45deg,#005eff,#00f7ff);
   color:white;
   font-weight:bold;
+  cursor:pointer;
 }
-a{text-decoration:none;}
+a{color:#00f7ff;text-decoration:none;}
 </style>
 </head>
 
 <body>
 
-<h1>🎮 SCRIPTS POR JOGO</h1>
-<a href="index.html" style="color:#00f7ff;">⬅ Voltar</a>
+<h1>🎮 SCRIPTS DO RAUAN HUB</h1>
+<a href="index.html">⬅ Voltar</a>
 
-<div class="card">
-<h3>🌊 Escape Tsunami for Brainrots</h3>
-<p>Script com funções para facilitar o gameplay.</p>
-<a href="tsunami.html"><button class="btn">Abrir Script</button></a>
+<input type="text" class="search" placeholder="Pesquisar jogo..." onkeyup="searchGame()">
+
+<!-- TSUNAMI -->
+<div class="card game">
+  <h3>🌊 Escape Tsunami for Brainrots</h3>
+  <button class="btn" onclick="copyScript('tsunami')">📋 Copiar Script</button>
 </div>
+
+<!-- FUTUROS JOGOS (EXEMPLO) -->
+<div class="card game">
+  <h3>🏡 Brookhaven</h3>
+  <button class="btn" onclick="copyScript('brookhaven')">📋 Copiar Script</button>
+</div>
+
+<div class="card game">
+  <h3>🔪 Murder Mystery 2</h3>
+  <button class="btn" onclick="copyScript('mm2')">📋 Copiar Script</button>
+</div>
+
+<script>
+const scripts = {
+  tsunami: `-- Escape Tsunami
+print("Rauan Hub Tsunami Ativado")`,
+
+  brookhaven: `-- Brookhaven Script
+print("Rauan Hub Brookhaven Ativado")`,
+
+  mm2: `-- MM2 Script
+print("Rauan Hub MM2 Ativado")`
+};
+
+function copyScript(game){
+  navigator.clipboard.writeText(scripts[game]);
+  alert("Script copiado com sucesso!");
+}
+
+function searchGame(){
+  let input = document.querySelector(".search").value.toLowerCase();
+  let games = document.querySelectorAll(".game");
+
+  games.forEach(card => {
+    let text = card.innerText.toLowerCase();
+    card.style.display = text.includes(input) ? "block" : "none";
+  });
+}
+</script>
 
 </body>
 </html>
