@@ -4,17 +4,47 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RAUAN HUB</title>
+
 <style>
-body{margin:0;font-family:Arial;background:#050816;color:white;text-align:center;}
-h1{margin-top:40px;color:#00f7ff;text-shadow:0 0 15px #00f7ff;}
-.btn{
-  display:inline-block;margin:12px;padding:12px 25px;border-radius:12px;
-  text-decoration:none;font-weight:bold;color:white;
-  background:linear-gradient(45deg,#005eff,#00f7ff);
-  box-shadow:0 0 15px #00f7ff;transition:.3s;
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#050816;
+  color:white;
+  text-align:center;
+  overflow-x:hidden;
 }
+
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+h1{
+  margin-top:40px;
+  color:#00f7ff;
+  text-shadow:0 0 15px #00f7ff;
+}
+
+.btn{
+  display:inline-block;
+  margin:12px;
+  padding:12px 25px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:bold;
+  color:white;
+  background:linear-gradient(45deg,#005eff,#00f7ff);
+  box-shadow:0 0 15px #00f7ff;
+  transition:.3s;
+}
+
 .btn:hover{transform:scale(1.15);}
+
 .typing{margin-top:20px;font-size:18px;color:#00f7ff;}
+
 .card{
   background:#0d1228;
   margin:25px auto;
@@ -24,6 +54,7 @@ h1{margin-top:40px;color:#00f7ff;text-shadow:0 0 15px #00f7ff;}
   box-shadow:0 0 20px #00f7ff;
   line-height:1.6;
 }
+
 .small-btn{
   display:inline-block;
   margin:8px;
@@ -34,9 +65,25 @@ h1{margin-top:40px;color:#00f7ff;text-shadow:0 0 15px #00f7ff;}
   color:#00f7ff;
   border:1px solid #00f7ff;
 }
+
+.counter{
+  font-size:20px;
+  color:#00ff88;
+  margin-top:10px;
+}
+
+footer{
+  margin-top:50px;
+  padding:15px;
+  font-size:12px;
+  color:#666;
+}
 </style>
 </head>
+
 <body>
+
+<canvas id="bg"></canvas>
 
 <h1>RAUAN HUB</h1>
 <div class="typing" id="typing"></div>
@@ -52,19 +99,25 @@ Sempre trazendo atualizações e tutoriais para a comunidade.
 </div>
 
 <div class="card">
-<h3>⚡ Status</h3>
-✔ Sistema online<br>
-✔ Scripts testados<br>
-✔ Atualizações frequentes
-</div>
-
-<div class="card">
 <h3>🌐 Comunidade</h3>
 <a class="small-btn" href="https://discord.gg/solixhub">💬 Discord</a>
 <a class="small-btn" href="https://www.youtube.com/@rauanX9">🎥 YouTube</a>
 </div>
 
+<div class="card">
+<h3>👥 Visitantes Totais</h3>
+<div class="counter" id="visits">12843</div>
+</div>
+
+<footer>Rauan Hub © 2026</footer>
+
+<!-- SOM -->
+<audio autoplay>
+  <source src="https://www.soundjay.com/buttons/sounds/button-29.mp3" type="audio/mpeg">
+</audio>
+
 <script>
+// TEXTO DIGITANDO
 const text="> Link verificado... Conexão permitida pelo criador. Bem-vindo ao Rauan Hub.";
 let i=0;
 function type(){
@@ -74,6 +127,34 @@ function type(){
  }
 }
 type();
+
+// PARTÍCULAS
+const c=document.getElementById("bg");
+const ctx=c.getContext("2d");
+c.width=window.innerWidth;
+c.height=window.innerHeight;
+let particles=[];
+for(let i=0;i<70;i++){
+ particles.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2});
+}
+function draw(){
+ ctx.clearRect(0,0,c.width,c.height);
+ ctx.fillStyle="#00f7ff";
+ particles.forEach(p=>{
+   ctx.beginPath();
+   ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+   ctx.fill();
+   p.y+=0.3;
+   if(p.y>c.height)p.y=0;
+ });
+ requestAnimationFrame(draw);
+}
+draw();
+
+// CONTADOR VISITANTES
+setInterval(()=>{
+ visits.textContent=parseInt(visits.textContent)+Math.floor(Math.random()*3);
+},4000);
 </script>
 
 </body>
