@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RAUAN HUB</title>
+<title>Executores • Rauan Hub</title>
 
 <style>
 body{
@@ -23,50 +23,51 @@ canvas{
 }
 
 h1{
-  margin-top:40px;
   color:#00f7ff;
   text-shadow:0 0 15px #00f7ff;
+  margin-top:30px;
 }
 
-.btn{
-  display:inline-block;
-  margin:12px;
-  padding:12px 25px;
-  border-radius:12px;
-  text-decoration:none;
+.status{
+  color:#00ff88;
   font-weight:bold;
-  color:white;
-  background:linear-gradient(45deg,#005eff,#00f7ff);
-  box-shadow:0 0 15px #00f7ff;
-  transition:.3s;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow{
-  0%{box-shadow:0 0 15px #00f7ff;}
-  100%{box-shadow:0 0 35px #00f7ff;}
-}
-
-.btn:hover{transform:scale(1.15);}
-
-.typing{
-  margin-top:20px;
-  font-size:18px;
-  color:#00f7ff;
+  margin-bottom:10px;
 }
 
 .card{
   background:#0d1228;
   margin:25px auto;
-  padding:20px;
-  border-radius:15px;
-  max-width:450px;
+  padding:22px;
+  border-radius:16px;
+  max-width:430px;
   box-shadow:0 0 20px #00f7ff;
-  line-height:1.6;
+  line-height:1.7;
   transition:0.3s;
 }
 
 .card:hover{transform:translateY(-5px);}
+
+.btn{
+  display:block;
+  margin:10px auto;
+  padding:12px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:bold;
+  color:white;
+  background:linear-gradient(45deg,#005eff,#00f7ff);
+  box-shadow:0 0 12px #00f7ff;
+  transition:0.3s;
+  width:85%;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  0%{box-shadow:0 0 12px #00f7ff;}
+  100%{box-shadow:0 0 35px #00f7ff;}
+}
+
+.btn:hover{transform:scale(1.08);}
 
 .small-btn{
   display:inline-block;
@@ -80,9 +81,9 @@ h1{
 }
 
 .counter{
-  font-size:20px;
-  color:#00ff88;
   margin-top:10px;
+  font-size:14px;
+  color:#00ff88;
 }
 
 footer{
@@ -98,51 +99,46 @@ footer{
 
 <canvas id="bg"></canvas>
 
-<h1>RAUAN HUB</h1>
-<div class="typing" id="typing"></div>
+<h1>EXECUTORES</h1>
+<p class="status">● Servidores Online</p>
+<a class="btn" href="index.html">⬅ Voltar</a>
 
-<a class="btn" href="executores.html">EXECUTORES</a>
-<a class="btn" href="scripts.html">SCRIPTS</a>
-<a class="btn" href="tutorial.html">TUTORIAL</a>
-
+<!-- DELTA -->
 <div class="card">
-<h3>💻 Sobre o Hub</h3>
-Hub focado em scripts, testes, novidades e conteúdo sobre Roblox.<br>
-Sempre trazendo atualizações e tutoriais para a comunidade.
+  <h3>Delta Executor</h3>
+  <p>Executor atualizado, estável e amplamente utilizado.</p>
+  <p>📦 Versão: v2.705 | 📱 Plataforma: Android | ⚡ Desempenho: Alto</p>
+
+  <a class="btn" href="https://delta-executor.com/" target="_blank">🌐 Site Oficial</a>
+  <a class="btn" href="https://www.mediafire.com/file/k5wkl674037z5xo/rauanHUB_Delta-v2.705-01.apk/file" target="_blank">⬇ Download Mediafire</a>
+  <a class="btn" href="https://discord.gg/Gdy99jMs5" target="_blank">💬 Discord Oficial</a>
+
+  <div class="counter">⬇ Downloads: <span id="d1">24821</span></div>
 </div>
 
+<!-- RONIX -->
 <div class="card">
-<h3>🌐 Comunidade</h3>
-<a class="small-btn" href="https://discord.gg/solixhub">💬 Discord</a>
-<a class="small-btn" href="https://www.youtube.com/@rauanX9">🎥 YouTube</a>
+  <h3>Ronix Executor</h3>
+  <p>Executor leve e otimizado.</p>
+  <p>📦 Versão: Atual | 📱 Plataforma: Android | ⚡ Desempenho: Otimizado</p>
+
+  <a class="btn" href="https://wearedevs.net/d/Ronix" target="_blank">🌐 Site Oficial</a>
+  <a class="btn" href="https://www.mediafire.com/file/ll41se3adfrif9s/rauanHUB_ronix.apk/file" target="_blank">⬇ Download Mediafire</a>
+  <a class="btn" href="https://discord.gg/ronixstudios" target="_blank">💬 Discord Oficial</a>
+
+  <div class="counter">⬇ Downloads: <span id="d2">17304</span></div>
 </div>
 
-<div class="card">
-<h3>👥 Visitantes Totais</h3>
-<div class="counter" id="visits">12843</div>
-</div>
-
-<footer>Rauan Hub © 2026</footer>
+<footer>Rauan Hub © 2026 — Todos os direitos reservados</footer>
 
 <script>
-// TEXTO DIGITANDO
-const text="> Conexão segura... Bem-vindo ao Rauan Hub.";
-let i=0;
-function type(){
- if(i<text.length){
-  document.getElementById("typing").innerHTML+=text.charAt(i);
-  i++; setTimeout(type,40);
- }
-}
-type();
-
-// PARTICULAS
+// PARTICULAS ANIMADAS
 const c=document.getElementById("bg");
 const ctx=c.getContext("2d");
 c.width=window.innerWidth;
 c.height=window.innerHeight;
 let particles=[];
-for(let i=0;i<70;i++){
+for(let i=0;i<80;i++){
   particles.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2});
 }
 function draw(){
@@ -159,10 +155,11 @@ function draw(){
 }
 draw();
 
-// CONTADOR VISITANTES
+// CONTADORES DE DOWNLOADS
 setInterval(()=>{
-  visits.textContent=parseInt(visits.textContent)+Math.floor(Math.random()*3);
-},4000);
+  d1.textContent=parseInt(d1.textContent)+Math.floor(Math.random()*3);
+  d2.textContent=parseInt(d2.textContent)+Math.floor(Math.random()*2);
+},3000);
 </script>
 
 </body>
