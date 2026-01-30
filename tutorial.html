@@ -3,41 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tutorial</title>
+<title>Tutorial • Rauan Hub</title>
+
 <style>
 body{
   margin:0;
-  font-family:Arial;
+  font-family:Arial, Helvetica, sans-serif;
   background:#050816;
   color:white;
   text-align:center;
+  overflow-x:hidden;
 }
+
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
 h1{
   color:#00f7ff;
   text-shadow:0 0 15px #00f7ff;
   margin-top:30px;
 }
+
 .card{
   background:#0d1228;
-  margin:20px auto;
-  padding:20px;
-  border-radius:15px;
-  max-width:450px;
+  margin:25px auto;
+  padding:22px;
+  border-radius:16px;
+  max-width:470px;
   box-shadow:0 0 20px #00f7ff;
-  line-height:1.6;
+  line-height:1.7;
+  transition:0.3s;
 }
+
+.card:hover{transform:scale(1.03);}
+
 a{
   color:#00f7ff;
   text-decoration:none;
   font-weight:bold;
 }
+
 .highlight{
   color:#00f7ff;
   font-weight:bold;
 }
+
+.btn{
+  margin-top:12px;
+  padding:12px 20px;
+  border-radius:12px;
+  border:none;
+  background:linear-gradient(45deg,#005eff,#00f7ff);
+  color:white;
+  font-weight:bold;
+  box-shadow:0 0 12px #00f7ff;
+  transition:0.3s;
+}
+
+.btn:hover{transform:scale(1.1);}
+
+footer{
+  margin-top:50px;
+  padding:15px;
+  font-size:12px;
+  color:#666;
+}
 </style>
 </head>
+
 <body>
+
+<canvas id="bg"></canvas>
 
 <h1>📘 TUTORIAL DE USO</h1>
 <a href="index.html">⬅ Voltar para o início</a>
@@ -50,7 +90,7 @@ Baixe um executor compatível com seu dispositivo.</p>
 Abra o Roblox e entre no jogo desejado.</p>
 
 <p><span class="highlight">PASSO 3:</span><br>
-Abra o executor e conecte ao jogo (inject).</p>
+Abra o executor e conecte ao jogo.</p>
 
 <p><span class="highlight">PASSO 4:</span><br>
 Copie o script disponível na página de scripts.</p>
@@ -60,11 +100,43 @@ Cole no executor e execute para abrir o hub.</p>
 </div>
 
 <div class="card">
-<h3 style="color:#00f7ff;">🎥 Tutorial em vídeo</h3>
-<p>Eu também explico tudo <span class="highlight">passo a passo durante meus vídeos</span>.</p>
-<p>Se tiver dúvida, assiste os vídeos que mostro na prática como usar o script, instalar executor e evitar erros.</p>
-<p>👉 Acompanhe os vídeos para aprender visualmente.</p>
+<h3 style="color:#00f7ff;">Guia Completo de Instalação</h3>
+
+<p>
+Para facilitar, disponibilizei um <span class="highlight">guia detalhado mostrando como baixar, configurar e usar o script e o executor corretamente</span>, evitando erros comuns.
+</p>
+
+<button class="btn" onclick="window.open('COLOQUE_SEU_LINK_AQUI')">
+📥 Acessar Guia Completo
+</button>
 </div>
+
+<footer>Rauan Hub © 2026</footer>
+
+<script>
+// PARTÍCULAS
+const c=document.getElementById("bg");
+const ctx=c.getContext("2d");
+c.width=window.innerWidth;
+c.height=window.innerHeight;
+let particles=[];
+for(let i=0;i<70;i++){
+ particles.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2});
+}
+function draw(){
+ ctx.clearRect(0,0,c.width,c.height);
+ ctx.fillStyle="#00f7ff";
+ particles.forEach(p=>{
+   ctx.beginPath();
+   ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+   ctx.fill();
+   p.y+=0.3;
+   if(p.y>c.height)p.y=0;
+ });
+ requestAnimationFrame(draw);
+}
+draw();
+</script>
 
 </body>
 </html>
