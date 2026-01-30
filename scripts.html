@@ -102,16 +102,6 @@ footer{
   <div class="counter">📄 Copiado: <span id="copied">10452</span> vezes</div>
 </div>
 
-<!-- SCRIPT EXTRA EXEMPLO -->
-<div class="card">
-  <h3>Script Extra</h3>
-  <p>Outro script útil para testes e aprendizado.</p>
-
-  <button class="btn" onclick="copyExtra()">📋 Copiar Script</button>
-
-  <div class="counter">📄 Copiado: <span id="copied2">7521</span> vezes</div>
-</div>
-
 <footer>Rauan Hub © 2026 — Todos os direitos reservados</footer>
 
 <script>
@@ -138,28 +128,17 @@ function draw(){
 }
 draw();
 
-// CONTADORES ANIMADOS
+// CONTADOR ANIMADO
 setInterval(()=>{
   copied.textContent=parseInt(copied.textContent)+Math.floor(Math.random()*2);
-  copied2.textContent=parseInt(copied2.textContent)+Math.floor(Math.random()*2);
 },3000);
 
-// FUNÇÕES DE COPIAR
+// FUNÇÃO DE COPIAR
 function copyScript(){
   const script=`print("Rauan Hub Ativado")`;
   navigator.clipboard.writeText(script);
   alert("Script copiado!");
 }
-
-function copyExtra(){
-  const script=`print("Script Extra Ativado")`;
-  navigator.clipboard.writeText(script);
-  alert("Script copiado!");
-}
-</script>
-
-</body>
-</html>}
 </script>
 
 </body>
