@@ -3,15 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Executores</title>
+<title>Executores • Rauan Hub</title>
 
 <style>
 body{
   margin:0;
-  font-family:Arial;
+  font-family:Arial, Helvetica, sans-serif;
   background:#050816;
   color:white;
   text-align:center;
+  overflow-x:hidden;
+}
+
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
 }
 
 h1{
@@ -20,20 +28,23 @@ h1{
   margin-top:30px;
 }
 
+.status{
+  color:#00ff88;
+  font-weight:bold;
+}
+
 .card{
   background:#0d1228;
   margin:25px auto;
-  padding:20px;
-  border-radius:15px;
-  max-width:420px;
+  padding:22px;
+  border-radius:16px;
+  max-width:430px;
   box-shadow:0 0 20px #00f7ff;
-  line-height:1.6;
+  line-height:1.7;
   transition:0.3s;
 }
 
-.card:hover{
-  transform:scale(1.03);
-}
+.card:hover{transform:scale(1.04);}
 
 .btn{
   display:block;
@@ -49,59 +60,98 @@ h1{
   transition:0.3s;
 }
 
-.btn:hover{
-  transform:scale(1.08);
+.btn:hover{transform:scale(1.08);}
+
+.small{font-size:13px;color:#aaa;margin-top:10px;}
+
+.counter{
+  margin-top:8px;
+  font-size:14px;
+  color:#00f7ff;
 }
 
-a.back{
-  color:#00f7ff;
-  text-decoration:none;
-  display:inline-block;
-  margin-top:10px;
+footer{
+  margin-top:50px;
+  padding:15px;
+  font-size:12px;
+  color:#666;
 }
 </style>
 </head>
 
 <body>
 
+<canvas id="bg"></canvas>
+
 <h1>EXECUTORES</h1>
-<a class="back" href="index.html">⬅ Voltar</a>
+<p class="status">● Servidores Online</p>
 
 <!-- DELTA -->
 <div class="card">
   <h3>Delta Executor</h3>
   <p>Executor atualizado, estável e amplamente utilizado.</p>
 
-  <a class="btn" href="https://delta-executor.com/" target="_blank">
-  🌐 Site Oficial
-  </a>
+  <p>📦 Versão: v2.705<br>📱 Android<br>⚡ Desempenho: Alto</p>
 
-  <a class="btn" href="https://www.mediafire.com/file/k5wkl674037z5xo/rauanHUB_Delta-v2.705-01.apk/file" target="_blank">
-  ⬇ Download Mediafire
-  </a>
+  <a class="btn" href="https://delta-executor.com/" target="_blank">🌐 Site Oficial</a>
+  <a class="btn" href="https://www.mediafire.com/file/k5wkl674037z5xo/rauanHUB_Delta-v2.705-01.apk/file" target="_blank">⬇ Download Mediafire</a>
+  <a class="btn" href="https://discord.gg/Gdy99jMs5" target="_blank">💬 Discord Oficial</a>
 
-  <a class="btn" href="https://discord.gg/Gdy99jMs5" target="_blank">
-  💬 Discord Oficial
-  </a>
+  <div class="counter">⬇ Downloads: <span id="d1">24821</span></div>
+  <p class="small">⚠ Baixe apenas pelos links oficiais.</p>
 </div>
 
 <!-- RONIX -->
 <div class="card">
   <h3>Ronix Executor</h3>
-  <p>Executor leve, otimizado e com bom desempenho.</p>
+  <p>Executor leve e otimizado.</p>
 
-  <a class="btn" href="https://wearedevs.net/d/Ronix" target="_blank">
-  🌐 Site Oficial
-  </a>
+  <p>📦 Versão: Atual<br>📱 Android<br>⚡ Desempenho: Otimizado</p>
 
-  <a class="btn" href="https://www.mediafire.com/file/ll41se3adfrif9s/rauanHUB_ronix.apk/file" target="_blank">
-  ⬇ Download Mediafire
-  </a>
+  <a class="btn" href="https://wearedevs.net/d/Ronix" target="_blank">🌐 Site Oficial</a>
+  <a class="btn" href="https://www.mediafire.com/file/ll41se3adfrif9s/rauanHUB_ronix.apk/file" target="_blank">⬇ Download Mediafire</a>
+  <a class="btn" href="https://discord.gg/ronixstudios" target="_blank">💬 Discord Oficial</a>
 
-  <a class="btn" href="https://discord.gg/ronixstudios" target="_blank">
-  💬 Discord Oficial
-  </a>
+  <div class="counter">⬇ Downloads: <span id="d2">17304</span></div>
 </div>
+
+<footer>Rauan Hub © 2026 — Todos os direitos reservados</footer>
+
+<!-- SOM -->
+<audio autoplay>
+  <source src="https://www.soundjay.com/buttons/sounds/button-29.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// PARTÍCULAS
+const c=document.getElementById("bg");
+const ctx=c.getContext("2d");
+c.width=window.innerWidth;
+c.height=window.innerHeight;
+let particles=[];
+for(let i=0;i<80;i++){
+ particles.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2});
+}
+function draw(){
+ ctx.clearRect(0,0,c.width,c.height);
+ ctx.fillStyle="#00f7ff";
+ particles.forEach(p=>{
+   ctx.beginPath();
+   ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+   ctx.fill();
+   p.y+=0.3;
+   if(p.y>c.height)p.y=0;
+ });
+ requestAnimationFrame(draw);
+}
+draw();
+
+// CONTADOR SUBINDO
+setInterval(()=>{
+ d1.textContent=parseInt(d1.textContent)+Math.floor(Math.random()*3);
+ d2.textContent=parseInt(d2.textContent)+Math.floor(Math.random()*2);
+},3000);
+</script>
 
 </body>
 </html>
