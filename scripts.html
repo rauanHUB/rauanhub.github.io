@@ -55,6 +55,17 @@ h1{
 
 .btn:hover{transform:scale(1.1);}
 
+.key-badge{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 12px;
+  border-radius:8px;
+  font-size:13px;
+  background:#111a3a;
+  color:#00ff88;
+  border:1px solid #00ff88;
+}
+
 .counter{
   margin-top:10px;
   font-size:14px;
@@ -78,9 +89,12 @@ footer{
 <a href="index.html" style="color:#00f7ff;text-decoration:none;">⬅ Voltar</a>
 
 <div class="card">
-<h3>🌊Script for escape tsunami for brainrots</h3>
-<p>the best script for this game right now.</p>
+<h3>🌊 Script for escape tsunami for brainrots</h3>
+<p>The best script for this game right now.</p>
 
+<div class="key-badge">🔑 Possui Key System</div>
+
+<br>
 <button class="btn" onclick="copyScript()">📋 Copiar Script</button>
 
 <div class="counter">📊 Cópias feitas: <span id="copies">5932</span></div>
@@ -88,42 +102,53 @@ footer{
 
 <footer>Rauan Hub © 2026</footer>
 
-<!-- SOM -->
-<audio autoplay>
-  <source src="https://www.soundjay.com/buttons/sounds/button-29.mp3" type="audio/mpeg">
-</audio>
-
 <script>
+// CONTADOR
+const copies = document.getElementById("copies");
+
 // SCRIPT
 function copyScript(){
 const script=`loadstring(game:HttpGet("https://raw.githubusercontent.com/debunked69/Solixreworkkeysystem/main/solix%20new%20keyui.lua"))()`;
 navigator.clipboard.writeText(script);
 alert("Script copiado!");
-copies.textContent=parseInt(copies.textContent)+1;
+copies.textContent = parseInt(copies.textContent) + 1;
 }
 
-// PARTÍCULAS
+// PARTÍCULAS FUNDO
 const c=document.getElementById("bg");
 const ctx=c.getContext("2d");
 c.width=window.innerWidth;
 c.height=window.innerHeight;
+
 let particles=[];
-for(let i=0;i<70;i++){
- particles.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2});
+for(let i=0;i<60;i++){
+  particles.push({
+    x:Math.random()*c.width,
+    y:Math.random()*c.height,
+    r:Math.random()*2,
+    d:Math.random()*1
+  });
 }
+
 function draw(){
- ctx.clearRect(0,0,c.width,c.height);
- ctx.fillStyle="#00f7ff";
- particles.forEach(p=>{
-   ctx.beginPath();
-   ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-   ctx.fill();
-   p.y+=0.3;
-   if(p.y>c.height)p.y=0;
- });
- requestAnimationFrame(draw);
+  ctx.clearRect(0,0,c.width,c.height);
+  ctx.fillStyle="#00f7ff";
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+  });
+  update();
 }
-draw();
+
+function update(){
+  particles.forEach(p=>{
+    p.y+=p.d;
+    if(p.y>c.height) p.y=0;
+  });
+}
+
+setInterval(draw,33);
 </script>
 
 </body>
