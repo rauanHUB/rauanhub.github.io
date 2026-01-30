@@ -8,13 +8,32 @@
 body{margin:0;font-family:Arial;background:#050816;color:white;text-align:center;}
 h1{margin-top:40px;color:#00f7ff;text-shadow:0 0 15px #00f7ff;}
 .btn{
-  display:inline-block;margin:15px;padding:12px 25px;border-radius:12px;
+  display:inline-block;margin:12px;padding:12px 25px;border-radius:12px;
   text-decoration:none;font-weight:bold;color:white;
   background:linear-gradient(45deg,#005eff,#00f7ff);
   box-shadow:0 0 15px #00f7ff;transition:.3s;
 }
 .btn:hover{transform:scale(1.15);}
 .typing{margin-top:20px;font-size:18px;color:#00f7ff;}
+.card{
+  background:#0d1228;
+  margin:25px auto;
+  padding:20px;
+  border-radius:15px;
+  max-width:450px;
+  box-shadow:0 0 20px #00f7ff;
+  line-height:1.6;
+}
+.small-btn{
+  display:inline-block;
+  margin:8px;
+  padding:10px 18px;
+  border-radius:10px;
+  text-decoration:none;
+  background:#111a3a;
+  color:#00f7ff;
+  border:1px solid #00f7ff;
+}
 </style>
 </head>
 <body>
@@ -25,8 +44,28 @@ h1{margin-top:40px;color:#00f7ff;text-shadow:0 0 15px #00f7ff;}
 <a class="btn" href="executores.html">EXECUTORES</a>
 <a class="btn" href="scripts.html">SCRIPTS</a>
 <a class="btn" href="tutorial.html">TUTORIAL</a>
+
+<div class="card">
+<h3>💻 Sobre o Hub</h3>
+Hub focado em scripts, testes, novidades e conteúdo sobre Roblox.<br>
+Sempre trazendo atualizações e tutoriais para a comunidade.
+</div>
+
+<div class="card">
+<h3>⚡ Status</h3>
+✔ Sistema online<br>
+✔ Scripts testados<br>
+✔ Atualizações frequentes
+</div>
+
+<div class="card">
+<h3>🌐 Comunidade</h3>
+<a class="small-btn" href="#">💬 Discord</a>
+<a class="small-btn" href="#">🎥 YouTube</a>
+</div>
+
 <script>
-const text="> Sistema iniciado... Rauan Hub online.";
+const text="> Acesso liberado... Rauan Hub inicializado.";
 let i=0;
 function type(){
  if(i<text.length){
