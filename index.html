@@ -9,49 +9,62 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(180deg, #0a0a0a, #111);
     color: white;
     text-align: center;
     scroll-behavior: smooth;
+    background: url("https://images.alphacoders.com/133/1337527.png") no-repeat center center fixed;
+    background-size: cover;
+    overflow-x: hidden;
 }
 
-.header {
-    padding: 40px 20px;
+/* Camada escura por cima */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: -1;
 }
 
+/* Título */
 h1 {
+    margin-top: 40px;
+    font-size: 40px;
     color: #ff00ff;
-    text-shadow: 0 0 15px #ff00ff;
+    text-shadow: 0 0 10px #ff00ff, 0 0 25px #ff00ff;
 }
 
+/* Botões */
 .btn {
     display: inline-block;
     margin: 10px;
-    padding: 12px 20px;
+    padding: 12px 22px;
     border-radius: 12px;
     text-decoration: none;
     font-weight: bold;
     color: white;
     background: linear-gradient(45deg, #5f00ff, #ff00ff);
-    box-shadow: 0 0 10px #ff00ff;
+    box-shadow: 0 0 15px #ff00ff;
     transition: 0.3s;
 }
 
 .btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
+    box-shadow: 0 0 25px #ff00ff;
 }
 
+/* Seções */
 .section {
-    margin-top: 60px;
+    margin-top: 80px;
     padding: 20px;
 }
 
 .card {
-    background: #1a1a1a;
+    background: rgba(20,20,20,0.85);
     margin: 20px auto;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 0 15px rgba(255,0,255,0.5);
+    box-shadow: 0 0 20px rgba(255,0,255,0.6);
     max-width: 400px;
 }
 
@@ -65,24 +78,33 @@ h1 {
     color: white;
     font-weight: bold;
 }
+
+/* Partículas */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
 </style>
 </head>
 
 <body>
 
-<div class="header">
-    <h1>RAUAN HUB</h1>
-    <a class="btn" href="#executores">Executores</a>
-    <a class="btn" href="#scripts">Scripts</a>
-    <a class="btn" href="#tutorial">Tutorial</a>
-</div>
+<canvas id="particles"></canvas>
+
+<h1>RAUAN HUB</h1>
+
+<a class="btn" href="#executores">Executores</a>
+<a class="btn" href="#scripts">Scripts</a>
+<a class="btn" href="#tutorial">Tutorial</a>
 
 <div class="section" id="executores">
     <h2 style="color:#00c3ff;">EXECUTORES</h2>
 
     <div class="card">
         <h3>Delta Executor</h3>
-        <p>Executor atualizado com suporte avançado.</p>
+        <p>Executor atualizado.</p>
         <a class="download" href="#">Download</a>
     </div>
 
@@ -115,6 +137,53 @@ h1 {
         </p>
     </div>
 </div>
+
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray = [];
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+    }
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+    }
+    draw() {
+        ctx.fillStyle = "rgba(255,0,255,0.8)";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function init() {
+    for (let i = 0; i < 100; i++) {
+        particlesArray.push(new Particle());
+    }
+}
+
+function animate() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particlesArray.forEach(p => {
+        p.update();
+        p.draw();
+    });
+    requestAnimationFrame(animate);
+}
+
+init();
+animate();
+</script>
 
 </body>
 </html>
