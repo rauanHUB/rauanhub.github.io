@@ -62,12 +62,21 @@ h1{
 
 .btn:hover{transform:scale(1.08);}
 
-.small{font-size:13px;color:#aaa;margin-top:10px;}
+.small-btn{
+  display:inline-block;
+  margin:8px;
+  padding:10px 18px;
+  border-radius:10px;
+  text-decoration:none;
+  background:#111a3a;
+  color:#00f7ff;
+  border:1px solid #00f7ff;
+}
 
 .counter{
-  margin-top:8px;
+  margin-top:10px;
   font-size:14px;
-  color:#00f7ff;
+  color:#00ff88;
 }
 
 footer{
@@ -85,20 +94,20 @@ footer{
 
 <h1>EXECUTORES</h1>
 <p class="status">● Servidores Online</p>
+<a class="btn" href="index.html">⬅ Voltar</a>
 
 <!-- DELTA -->
 <div class="card">
   <h3>Delta Executor</h3>
   <p>Executor atualizado, estável e amplamente utilizado.</p>
 
-  <p>📦 Versão: v2.705<br>📱 Android<br>⚡ Desempenho: Alto</p>
+  <p>📦 Versão: v2.705<br>📱 Plataforma: Android<br>⚡ Desempenho: Alto</p>
 
   <a class="btn" href="https://delta-executor.com/" target="_blank">🌐 Site Oficial</a>
   <a class="btn" href="https://www.mediafire.com/file/k5wkl674037z5xo/rauanHUB_Delta-v2.705-01.apk/file" target="_blank">⬇ Download Mediafire</a>
   <a class="btn" href="https://discord.gg/Gdy99jMs5" target="_blank">💬 Discord Oficial</a>
 
   <div class="counter">⬇ Downloads: <span id="d1">24821</span></div>
-  <p class="small">⚠ Baixe apenas pelos links oficiais.</p>
 </div>
 
 <!-- RONIX -->
@@ -106,7 +115,7 @@ footer{
   <h3>Ronix Executor</h3>
   <p>Executor leve e otimizado.</p>
 
-  <p>📦 Versão: Atual<br>📱 Android<br>⚡ Desempenho: Otimizado</p>
+  <p>📦 Versão: Atual<br>📱 Plataforma: Android<br>⚡ Desempenho: Otimizado</p>
 
   <a class="btn" href="https://wearedevs.net/d/Ronix" target="_blank">🌐 Site Oficial</a>
   <a class="btn" href="https://www.mediafire.com/file/ll41se3adfrif9s/rauanHUB_ronix.apk/file" target="_blank">⬇ Download Mediafire</a>
@@ -117,39 +126,34 @@ footer{
 
 <footer>Rauan Hub © 2026 — Todos os direitos reservados</footer>
 
-<!-- SOM -->
-<audio autoplay>
-  <source src="https://www.soundjay.com/buttons/sounds/button-29.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-// PARTÍCULAS
+// PARTÍCULAS ANIMADAS
 const c=document.getElementById("bg");
 const ctx=c.getContext("2d");
 c.width=window.innerWidth;
 c.height=window.innerHeight;
 let particles=[];
 for(let i=0;i<80;i++){
- particles.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2});
+  particles.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2});
 }
 function draw(){
- ctx.clearRect(0,0,c.width,c.height);
- ctx.fillStyle="#00f7ff";
- particles.forEach(p=>{
-   ctx.beginPath();
-   ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-   ctx.fill();
-   p.y+=0.3;
-   if(p.y>c.height)p.y=0;
- });
- requestAnimationFrame(draw);
+  ctx.clearRect(0,0,c.width,c.height);
+  ctx.fillStyle="#00f7ff";
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+    p.y+=0.3;
+    if(p.y>c.height)p.y=0;
+  });
+  requestAnimationFrame(draw);
 }
 draw();
 
-// CONTADOR SUBINDO
+// CONTADORES SUBINDO
 setInterval(()=>{
- d1.textContent=parseInt(d1.textContent)+Math.floor(Math.random()*3);
- d2.textContent=parseInt(d2.textContent)+Math.floor(Math.random()*2);
+  d1.textContent=parseInt(d1.textContent)+Math.floor(Math.random()*3);
+  d2.textContent=parseInt(d2.textContent)+Math.floor(Math.random()*2);
 },3000);
 </script>
 
