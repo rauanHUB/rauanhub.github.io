@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel do Dono • Rauan Hub</title>
+<style>
+body{font-family:Arial;background:#050816;color:white;text-align:center;padding:20px}
+input,textarea{
+  width:90%;
+  max-width:400px;
+  margin:8px;
+  padding:10px;
+  border-radius:8px;
+  border:none;
+}
+button{
+  padding:12px 20px;
+  border:none;
+  border-radius:10px;
+  background:#00f7ff;
+  font-weight:bold;
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<h2>🔒 Painel do Dono</h2>
+
+<div id="login">
+<input type="password" id="senha" placeholder="Senha do dono">
+<br>
+<button onclick="entrar()">Entrar</button>
+</div>
+
+<div id="painel" style="display:none;">
+<h3>Adicionar Novo Script</h3>
+
+<input id="nome" placeholder="Nome do Script"><br>
+<input id="desc" placeholder="Descrição"><br>
+<textarea id="codigo" placeholder="Cole o loadstring aqui"></textarea><br>
+
+<label>
+<input type="checkbox" id="key"> Possui Key System
+</label><br><br>
+
+<button onclick="salvar()">Adicionar Script</button>
+</div>
+
+<script>
+const SENHA="rauan123"; // MUDE AQUI
+
+function entrar(){
+ if(document.getElementById("senha").value===SENHA){
+   login.style.display="none";
+   painel.style.display="block";
+ } else alert("Senha errada");
+}
+
+function salvar(){
+ let scripts=JSON.parse(localStorage.getItem("scriptsHub")||"[]");
+
+ scripts.push({
+   nome:nome.value,
+   desc:desc.value,
+   codigo:codigo.value,
+   key:key.checked
+ });
+
+ localStorage.setItem("scriptsHub",JSON.stringify(scripts));
+ alert("Script adicionado!");
+}
+</script>
+
+</body>
+</html>
