@@ -15,30 +15,31 @@ body{
   overflow-x:hidden;
 }
 
-canvas{position:fixed;top:0;left:0;z-index:-1;}
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
 
-h1{color:#00f7ff;text-shadow:0 0 15px #00f7ff;margin-top:30px;}
+h1{
+  color:#00f7ff;
+  text-shadow:0 0 15px #00f7ff;
+  margin-top:30px;
+}
 
 .card{
   background:#0d1228;
-  margin:30px auto;
-  padding:0 0 22px 0;
+  margin:25px auto;
+  padding:22px;
   border-radius:16px;
-  max-width:440px;
+  max-width:430px;
   box-shadow:0 0 20px #00f7ff;
-  overflow:hidden;
+  line-height:1.7;
   transition:0.3s;
 }
+
 .card:hover{transform:scale(1.04);}
-
-.banner{
-  width:100%;
-  height:160px;
-  object-fit:cover;
-  border-bottom:2px solid #00f7ff;
-}
-
-.content{padding:18px;}
 
 .btn{
   margin-top:12px;
@@ -51,6 +52,7 @@ h1{color:#00f7ff;text-shadow:0 0 15px #00f7ff;margin-top:30px;}
   box-shadow:0 0 12px #00f7ff;
   transition:0.3s;
 }
+
 .btn:hover{transform:scale(1.1);}
 
 .key-badge{
@@ -62,20 +64,29 @@ h1{color:#00f7ff;text-shadow:0 0 15px #00f7ff;margin-top:30px;}
   background:#111a3a;
   border:1px solid;
 }
-.key-yes{color:#00ff88;border-color:#00ff88;}
-.key-no{color:#ff4d4d;border-color:#ff4d4d;}
 
-.video-link{
-  display:block;
+.key-yes{
+  color:#00ff88;
+  border-color:#00ff88;
+}
+
+.key-no{
+  color:#ff4d4d;
+  border-color:#ff4d4d;
+}
+
+.counter{
   margin-top:10px;
   font-size:14px;
   color:#00f7ff;
-  text-decoration:none;
 }
-.video-link:hover{text-shadow:0 0 8px #00f7ff;}
 
-.counter{margin-top:10px;font-size:14px;color:#00f7ff;}
-footer{margin-top:50px;padding:15px;font-size:12px;color:#666;}
+footer{
+  margin-top:50px;
+  padding:15px;
+  font-size:12px;
+  color:#666;
+}
 </style>
 </head>
 
@@ -86,75 +97,89 @@ footer{margin-top:50px;padding:15px;font-size:12px;color:#666;}
 <h1>SCRIPTS</h1>
 <a href="index.html" style="color:#00f7ff;text-decoration:none;">⬅ Voltar</a>
 
-<!-- 🌊 TSUNAMI SCRIPT -->
+<!-- SCRIPT TSUNAMI -->
 <div class="card">
-<img class="banner" src="https://i.imgur.com/8Km9tLL.jpg">
-<div class="content">
 <h3>🌊 Escape Tsunami for Brainrots</h3>
-<p>Script mais forte para esse jogo.</p>
+<p>Script mais forte para esse jogo atualmente.</p>
 
 <div class="key-badge key-yes">🔑 Possui Key System</div>
-<a class="video-link" href="https://youtu.be/SEU_VIDEO_TSUNAMI" target="_blank">🎥 Ver vídeo do script</a>
 
+<br>
 <button class="btn" onclick="copyScript1()">📋 Copiar Script</button>
+
 <div class="counter">📊 Cópias feitas: <span id="copies1">5932</span></div>
 </div>
-</div>
 
-<!-- 🎣 FISH SCRIPT -->
+<!-- SCRIPT FISH -->
 <div class="card">
-<img class="banner" src="https://i.imgur.com/4AiXzf8.jpg">
-<div class="content">
 <h3>🎣 Fish Script (Speed Hub X)</h3>
-<p>Script focado no jogo Fish.</p>
+<p>Script focado no jogo Fish, com funções de velocidade.</p>
 
 <div class="key-badge key-no">🚫 Sem Key</div>
-<a class="video-link" href="https://youtu.be/SEU_VIDEO_FISH" target="_blank">🎥 Ver vídeo do script</a>
 
+<br>
 <button class="btn" onclick="copyScript2()">📋 Copiar Script</button>
+
 <div class="counter">📊 Cópias feitas: <span id="copies2">1842</span></div>
-</div>
 </div>
 
 <footer>Rauan Hub © 2026</footer>
 
 <script>
+// CONTADORES
+const copies1 = document.getElementById("copies1");
+const copies2 = document.getElementById("copies2");
+
+// SCRIPT 1
 function copyScript1(){
 const script=`loadstring(game:HttpGet("https://raw.githubusercontent.com/debunked69/Solixreworkkeysystem/main/solix%20new%20keyui.lua"))()`;
 navigator.clipboard.writeText(script);
-copies1.textContent=parseInt(copies1.textContent)+1;
 alert("Script copiado!");
+copies1.textContent = parseInt(copies1.textContent) + 1;
 }
 
+// SCRIPT 2
 function copyScript2(){
 const script=`loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Speed-Hub-x-29294"))()`;
 navigator.clipboard.writeText(script);
-copies2.textContent=parseInt(copies2.textContent)+1;
 alert("Script copiado!");
+copies2.textContent = parseInt(copies2.textContent) + 1;
 }
 
-/* PARTÍCULAS FUNDO */
+// PARTÍCULAS FUNDO
 const c=document.getElementById("bg");
 const ctx=c.getContext("2d");
 c.width=window.innerWidth;
 c.height=window.innerHeight;
+
 let particles=[];
 for(let i=0;i<60;i++){
-particles.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2,d:Math.random()*1});
+  particles.push({
+    x:Math.random()*c.width,
+    y:Math.random()*c.height,
+    r:Math.random()*2,
+    d:Math.random()*1
+  });
 }
+
 function draw(){
-ctx.clearRect(0,0,c.width,c.height);
-ctx.fillStyle="#00f7ff";
-particles.forEach(p=>{
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fill();
-});
-particles.forEach(p=>{
-p.y+=p.d;
-if(p.y>c.height)p.y=0;
-});
+  ctx.clearRect(0,0,c.width,c.height);
+  ctx.fillStyle="#00f7ff";
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+  });
+  update();
 }
+
+function update(){
+  particles.forEach(p=>{
+    p.y+=p.d;
+    if(p.y>c.height) p.y=0;
+  });
+}
+
 setInterval(draw,33);
 </script>
 
