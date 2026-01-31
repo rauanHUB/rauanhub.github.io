@@ -33,7 +33,7 @@ h1{color:#00f7ff;text-shadow:0 0 15px #00f7ff;margin-top:30px;}
 
 .banner{
   width:100%;
-  height:160px;
+  height:170px;
   object-fit:cover;
   border-bottom:2px solid #00f7ff;
 }
@@ -72,7 +72,6 @@ h1{color:#00f7ff;text-shadow:0 0 15px #00f7ff;margin-top:30px;}
   color:#00f7ff;
   text-decoration:none;
 }
-.video-link:hover{text-shadow:0 0 8px #00f7ff;}
 
 .counter{margin-top:10px;font-size:14px;color:#00f7ff;}
 footer{margin-top:50px;padding:15px;font-size:12px;color:#666;}
@@ -86,9 +85,9 @@ footer{margin-top:50px;padding:15px;font-size:12px;color:#666;}
 <h1>SCRIPTS</h1>
 <a href="index.html" style="color:#00f7ff;text-decoration:none;">⬅ Voltar</a>
 
-<!-- 🌊 TSUNAMI SCRIPT -->
+<!-- 🌊 TSUNAMI -->
 <div class="card">
-<img class="banner" src="https://i.imgur.com/8Km9tLL.jpg">
+<img class="banner" src="https://i.imgur.com/3ZQ3Z6F.png">
 <div class="content">
 <h3>🌊 Escape Tsunami for Brainrots</h3>
 <p>Script mais forte para esse jogo.</p>
@@ -101,9 +100,9 @@ footer{margin-top:50px;padding:15px;font-size:12px;color:#666;}
 </div>
 </div>
 
-<!-- 🎣 FISH SCRIPT -->
+<!-- 🎣 FISH -->
 <div class="card">
-<img class="banner" src="https://i.imgur.com/4AiXzf8.jpg">
+<img class="banner" src="https://i.imgur.com/JQ9pRoD.png">
 <div class="content">
 <h3>🎣 Fish Script (Speed Hub X)</h3>
 <p>Script focado no jogo Fish.</p>
@@ -133,7 +132,7 @@ copies2.textContent=parseInt(copies2.textContent)+1;
 alert("Script copiado!");
 }
 
-/* PARTÍCULAS FUNDO */
+/* FUNDO PARTÍCULAS */
 const c=document.getElementById("bg");
 const ctx=c.getContext("2d");
 c.width=window.innerWidth;
@@ -149,8 +148,6 @@ particles.forEach(p=>{
 ctx.beginPath();
 ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
 ctx.fill();
-});
-particles.forEach(p=>{
 p.y+=p.d;
 if(p.y>c.height)p.y=0;
 });
