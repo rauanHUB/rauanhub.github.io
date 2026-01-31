@@ -30,16 +30,28 @@ h1{
 
 .card{
   background:#0d1228;
-  margin:25px auto;
-  padding:22px;
+  margin:30px auto;
+  padding:0 0 22px 0;
   border-radius:16px;
-  max-width:430px;
+  max-width:440px;
   box-shadow:0 0 20px #00f7ff;
   line-height:1.7;
+  overflow:hidden;
   transition:0.3s;
 }
 
 .card:hover{transform:scale(1.04);}
+
+.banner{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-bottom:2px solid #00f7ff;
+}
+
+.content{
+  padding:18px;
+}
 
 .btn{
   margin-top:12px;
@@ -62,8 +74,17 @@ h1{
   border-radius:8px;
   font-size:13px;
   background:#111a3a;
+  border:1px solid;
+}
+
+.key-yes{
   color:#00ff88;
-  border:1px solid #00ff88;
+  border-color:#00ff88;
+}
+
+.key-no{
+  color:#ff4d4d;
+  border-color:#ff4d4d;
 }
 
 .counter{
@@ -88,33 +109,62 @@ footer{
 <h1>SCRIPTS</h1>
 <a href="index.html" style="color:#00f7ff;text-decoration:none;">⬅ Voltar</a>
 
+<!-- TSUNAMI SCRIPT -->
 <div class="card">
-<h3>🌊 Script for escape tsunami for brainrots</h3>
-<p>The best script for this game right now.</p>
+<img class="banner" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Tsunami">
 
-<div class="key-badge">🔑 Possui Key System</div>
+<div class="content">
+<h3>🌊 Escape Tsunami for Brainrots</h3>
+<p>Script mais forte para esse jogo atualmente.</p>
+
+<div class="key-badge key-yes">🔑 Possui Key System</div>
 
 <br>
-<button class="btn" onclick="copyScript()">📋 Copiar Script</button>
+<button class="btn" onclick="copyScript1()">📋 Copiar Script</button>
 
-<div class="counter">📊 Cópias feitas: <span id="copies">5932</span></div>
+<div class="counter">📊 Cópias feitas: <span id="copies1">5932</span></div>
+</div>
+</div>
+
+<!-- FISH SCRIPT -->
+<div class="card">
+<img class="banner" src="https://images.unsplash.com/photo-1518837695005-2083093ee35b" alt="Fishing">
+
+<div class="content">
+<h3>🎣 Fish Script (Speed Hub X)</h3>
+<p>Script focado no jogo Fish, com funções de velocidade.</p>
+
+<div class="key-badge key-no">🚫 Sem Key</div>
+
+<br>
+<button class="btn" onclick="copyScript2()">📋 Copiar Script</button>
+
+<div class="counter">📊 Cópias feitas: <span id="copies2">1842</span></div>
+</div>
 </div>
 
 <footer>Rauan Hub © 2026</footer>
 
 <script>
-// CONTADOR
-const copies = document.getElementById("copies");
+// CONTADORES
+const copies1 = document.getElementById("copies1");
+const copies2 = document.getElementById("copies2");
 
-// SCRIPT
-function copyScript(){
+function copyScript1(){
 const script=`loadstring(game:HttpGet("https://raw.githubusercontent.com/debunked69/Solixreworkkeysystem/main/solix%20new%20keyui.lua"))()`;
 navigator.clipboard.writeText(script);
 alert("Script copiado!");
-copies.textContent = parseInt(copies.textContent) + 1;
+copies1.textContent = parseInt(copies1.textContent) + 1;
 }
 
-// PARTÍCULAS FUNDO
+function copyScript2(){
+const script=`loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Speed-Hub-x-29294"))()`;
+navigator.clipboard.writeText(script);
+alert("Script copiado!");
+copies2.textContent = parseInt(copies2.textContent) + 1;
+}
+
+// FUNDO PARTÍCULAS
 const c=document.getElementById("bg");
 const ctx=c.getContext("2d");
 c.width=window.innerWidth;
@@ -122,12 +172,7 @@ c.height=window.innerHeight;
 
 let particles=[];
 for(let i=0;i<60;i++){
-  particles.push({
-    x:Math.random()*c.width,
-    y:Math.random()*c.height,
-    r:Math.random()*2,
-    d:Math.random()*1
-  });
+  particles.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2,d:Math.random()*1});
 }
 
 function draw(){
